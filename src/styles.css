@@ -95,7 +95,7 @@ a {
 .topbar__eyebrow,
 .section-kicker,
 .field-label {
-  margin: 0 0 6px;
+  margin: 0 0 2px;
   color: var(--ink-soft);
   font-size: 0.78rem;
   font-weight: 700;
@@ -243,7 +243,7 @@ a {
 .details-card__body {
   padding: 4px 20px 22px;
   display: grid;
-  gap: 14px;
+  gap: 10px;
 }
 
 .primary-button,

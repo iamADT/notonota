@@ -230,6 +230,7 @@ a {
   background: var(--ink);
   color: #fffdf8;
   box-shadow: 0 8px 0 #00574b;
+  cursor: pointer;
 }
 
 .primary-button:disabled {
@@ -240,6 +241,7 @@ a {
 .secondary-button {
   background: var(--teal-soft);
   box-shadow: 0 8px 0 var(--teal);
+  cursor: pointer;
 }
 
 .secondary-button--inline {

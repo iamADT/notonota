@@ -9,7 +9,7 @@
 
 ## 1. App Foundation
 - [x] Create the initial Vite React TypeScript scaffold with working build and test commands.
-- [ ] Scaffold a Vite React TypeScript app configured as a PWA.
+- [x] Scaffold a Vite React TypeScript app configured as a PWA.
 - [x] Add `React Router` routes for `/capture`, `/saved`, `/person/:id`, `/person/:id/edit`, and `/review`.
 - [x] Set up a mobile-first layout with bottom navigation pinned to `Capture` and `Saved`.
 - [x] Implement the visual system: warm off-white background, charcoal outlines, restrained teal accents, rounded containers, and strong hierarchy.
@@ -68,12 +68,12 @@
 - [x] Require a confirmation dialog with irreversible wording before deletion.
 
 ## 6. Notifications and Reminder Behavior
-- [ ] Implement best-effort reminders only.
-- [ ] Register a service worker for PWA installability and notification permission flow.
-- [ ] Send one reminder notification when a review becomes due, at its `dueAt` timestamp, where web support allows it.
-- [ ] If the app is open and permission is granted, schedule an in-app notification at `dueAt`.
-- [ ] If the app is reopened after `dueAt`, immediately surface due state in the UI.
-- [ ] Do not add backend push, periodic background sync, or exact closed-app delivery guarantees.
+- [x] Implement best-effort reminders only.
+- [x] Register a service worker for PWA installability and notification permission flow.
+- [x] Send one reminder notification when a review becomes due, at its `dueAt` timestamp, where web support allows it.
+- [x] If the app is open and permission is granted, schedule an in-app notification at `dueAt`.
+- [x] If the app is reopened after `dueAt`, immediately surface due state in the UI.
+- [x] Do not add backend push, periodic background sync, or exact closed-app delivery guarantees.
 
 ## 7. Important Modules
 - [x] Create `db/people.ts` for IndexedDB schema, CRUD, and query helpers.

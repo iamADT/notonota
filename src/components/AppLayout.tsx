@@ -1,5 +1,6 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { BottomNav } from "./BottomNav";
+import { ReviewNotificationManager } from "./ReviewNotificationManager";
 
 const TITLES: Record<string, string> = {
   "/capture": "Capture",
@@ -28,6 +29,7 @@ export function AppLayout() {
   return (
     <div className="app-frame">
       <div className="app-surface">
+        <ReviewNotificationManager />
         <header className="topbar">
           <div>
             <p className="topbar__eyebrow">Names Memory App</p>
@@ -42,4 +44,3 @@ export function AppLayout() {
     </div>
   );
 }
-

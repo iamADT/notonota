@@ -119,11 +119,13 @@ a {
 .hero-card,
 .details-card,
 .support-card,
+.warning-card,
 .summary-card,
 .list-card,
 .review-card,
 .detail-card,
-.search-shell {
+.search-shell,
+.dialog-card {
   border: var(--outline);
   border-radius: var(--radius-xl);
   background: var(--surface);
@@ -139,6 +141,11 @@ a {
 
 .support-card {
   padding: 18px 20px;
+}
+
+.warning-card {
+  padding: 18px 20px;
+  background: #fff7db;
 }
 
 .support-card__title,
@@ -247,6 +254,7 @@ a {
   padding: 0;
   font-weight: 800;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .text-button--danger {
@@ -282,6 +290,13 @@ a {
   margin: 10px 0 0;
 }
 
+.summary-card__link {
+  display: inline-block;
+  margin-top: 12px;
+  font-weight: 800;
+  text-decoration: underline;
+}
+
 .list-card__header,
 .detail-card__header {
   display: flex;
@@ -306,6 +321,17 @@ a {
   gap: 16px;
 }
 
+.person-row--link {
+  text-decoration: none;
+}
+
+.person-row__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
 .person-row p,
 .detail-card p,
 .review-card p,
@@ -319,8 +345,20 @@ a {
   text-align: right;
 }
 
+.pill-badge {
+  display: inline-flex;
+  align-items: center;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  padding: 4px 10px;
+  background: #fff;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
 .review-card__actions,
-.edit-actions {
+.edit-actions,
+.dialog-actions {
   display: grid;
   gap: 12px;
 }
@@ -355,6 +393,42 @@ a {
   box-shadow: 0 8px 0 var(--teal);
 }
 
+.empty-state {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+.toast {
+  position: sticky;
+  top: 12px;
+  z-index: 2;
+  border: var(--outline);
+  border-radius: 999px;
+  background: var(--teal-soft);
+  box-shadow: 0 8px 0 var(--teal);
+  padding: 12px 18px;
+  font-weight: 800;
+}
+
+.dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  background: rgba(23, 23, 23, 0.28);
+  padding: 20px;
+}
+
+.dialog-card {
+  width: min(100%, 28rem);
+  padding: 22px;
+}
+
+.primary-button--danger {
+  box-shadow: 0 8px 0 var(--danger);
+}
+
 @media (min-width: 720px) {
   .app-frame {
     padding: 28px;
@@ -365,7 +439,8 @@ a {
   }
 
   .review-card__actions,
-  .edit-actions {
+  .edit-actions,
+  .dialog-actions {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: center;
   }

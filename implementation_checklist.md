@@ -26,46 +26,46 @@
 - [x] On `Missed it`, reset `reviewStage` to `0` and set the next `dueAt` to one day later at the same clock time as the missed review.
 - [x] On meaningful edits to `name` or any detail, reset review progress.
 - [x] Preserve review progress for typo-only or formatting-only edits.
-- [ ] Support hard delete only after explicit confirmation.
+- [x] Support hard delete only after explicit confirmation.
 
 ## 3. Capture and Saved Flows
-- [ ] Make `Capture` the default landing route.
-- [ ] Auto-focus the name field on supported devices.
-- [ ] Keep `Add more details` collapsed by default.
-- [ ] Use exactly three fixed detail fields: `Add memorable thing`, `Add where you met`, and `Add another detail`.
-- [ ] Disable `Save` until the trimmed name input is non-empty.
-- [ ] On save, persist the entry.
-- [ ] Detect exact duplicate names by normalized string match and show a non-blocking warning before save.
-- [ ] After save, show a brief success message.
-- [ ] After save, clear the form.
-- [ ] After save, dismiss the keyboard where the platform allows it.
-- [ ] Add a `Saved` screen search bar that uses simple case-insensitive substring matching across `name`, `memorableThing`, `whereMet`, and `anotherDetail`.
-- [ ] Show a review summary section with due count and incomplete count.
-- [ ] Sort the saved list by `createdAt desc`.
-- [ ] Show `name`, `whereMet` if present, and one memorable field if present in each row.
-- [ ] Show a passive label for incomplete entries with only a name.
+- [x] Make `Capture` the default landing route.
+- [x] Auto-focus the name field on supported devices.
+- [x] Keep `Add more details` collapsed by default.
+- [x] Use exactly three fixed detail fields: `Add memorable thing`, `Add where you met`, and `Add another detail`.
+- [x] Disable `Save` until the trimmed name input is non-empty.
+- [x] On save, persist the entry.
+- [x] Detect exact duplicate names by normalized string match and show a non-blocking warning before save.
+- [x] After save, show a brief success message.
+- [x] After save, clear the form.
+- [x] After save, dismiss the keyboard where the platform allows it.
+- [x] Add a `Saved` screen search bar that uses simple case-insensitive substring matching across `name`, `memorableThing`, `whereMet`, and `anotherDetail`.
+- [x] Show a review summary section with due count and incomplete count.
+- [x] Sort the saved list by `createdAt desc`.
+- [x] Show `name`, `whereMet` if present, and one memorable field if present in each row.
+- [x] Show a passive label for incomplete entries with only a name.
 
 ## 4. Review Flow
-- [ ] Include only eligible entries in review.
-- [ ] Cap the review queue at 3 entries per day.
-- [ ] When more than 3 are due, surface the 3 newest due items first by `dueAt desc`, breaking ties with `createdAt desc`.
-- [ ] Start review prompts with name recall first.
-- [ ] Show a simple masked prompt and supporting detail.
-- [ ] Allow the user to reveal the answer on demand.
-- [ ] Provide exactly two grading actions: `Got it` and `Missed it`.
-- [ ] On `Got it`, advance to the next review stage.
-- [ ] On the final successful stage, set `learnedAt` and remove the person from active review.
-- [ ] On `Missed it`, reveal the answer immediately and reset progress.
-- [ ] In the `Saved` review module, separate active due reviews from names that need more details before review eligibility.
+- [x] Include only eligible entries in review.
+- [x] Cap the review queue at 3 entries per day.
+- [x] When more than 3 are due, surface the 3 newest due items first by `dueAt desc`, breaking ties with `createdAt desc`.
+- [x] Start review prompts with name recall first.
+- [x] Show a simple masked prompt and supporting detail.
+- [x] Allow the user to reveal the answer on demand.
+- [x] Provide exactly two grading actions: `Got it` and `Missed it`.
+- [x] On `Got it`, advance to the next review stage.
+- [x] On the final successful stage, set `learnedAt` and remove the person from active review.
+- [x] On `Missed it`, reveal the answer immediately and reset progress.
+- [x] In the `Saved` review module, separate active due reviews from names that need more details before review eligibility.
 
 ## 5. Person Detail, Edit, and Delete
-- [ ] Build a person detail screen that shows all fields, review status, and entry metadata needed to distinguish duplicates, including created date/time.
-- [ ] Build an edit screen for updating all four fields.
-- [ ] Add meaningful-change detection that normalizes whitespace and casing before comparison.
-- [ ] Preserve review state when semantic content is unchanged.
-- [ ] Reset review state and recompute `dueAt` when semantic content changes meaningfully.
-- [ ] Put delete on the edit screen.
-- [ ] Require a confirmation dialog with irreversible wording before deletion.
+- [x] Build a person detail screen that shows all fields, review status, and entry metadata needed to distinguish duplicates, including created date/time.
+- [x] Build an edit screen for updating all four fields.
+- [x] Add meaningful-change detection that normalizes whitespace and casing before comparison.
+- [x] Preserve review state when semantic content is unchanged.
+- [x] Reset review state and recompute `dueAt` when semantic content changes meaningfully.
+- [x] Put delete on the edit screen.
+- [x] Require a confirmation dialog with irreversible wording before deletion.
 
 ## 6. Notifications and Reminder Behavior
 - [ ] Implement best-effort reminders only.
@@ -81,7 +81,7 @@
 - [x] Create `domain/search.ts` for normalized substring matching across searchable fields.
 - [x] Create `domain/meaningfulChange.ts` for distinguishing typo/format edits from memory-cue changes.
 - [x] Create route screens for `Capture`, `Saved`, `Review`, `PersonDetail`, and `EditPerson`.
-- [ ] Create shared UI pieces for bottom nav, search bar, review card, person row, success toast, and confirmation dialog.
+- [x] Create shared UI pieces for bottom nav, search bar, review card, person row, success toast, and confirmation dialog.
 
 ## 8. Test Plan
 - [x] Add a minimal smoke test so the scaffold has a passing baseline test run.

@@ -141,13 +141,6 @@ export function CaptureScreen() {
       >
         Save
       </button>
-      <section className="support-card">
-        <p className="support-card__title">Fast capture, light review</p>
-        <p>
-          The MVP starts on Capture so saving a name feels like the default action, not a side
-          task.
-        </p>
-      </section>
     </section>
   );
 }

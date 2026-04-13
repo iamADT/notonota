@@ -16,16 +16,16 @@
 - [x] Use plain CSS or CSS modules with shared design tokens.
 
 ## 2. Data Model and Persistence
-- [ ] Store all data locally in IndexedDB using a single `people` table.
-- [ ] Define the core `PersonEntry` shape with `id`, `name`, `memorableThing`, `whereMet`, `anotherDetail`, `createdAt`, `updatedAt`, `reviewStage`, `dueAt`, `lastReviewedAt`, and `learnedAt`.
-- [ ] Implement review eligibility: a person is reviewable only when `name` exists and at least one detail field is non-empty.
-- [ ] Implement incomplete state: entries with only a name are saved but marked as needing more details.
-- [ ] Implement learned state once all review stages are completed.
-- [ ] Use fixed review intervals in days: `[1, 1, 3, 7, 10, 14]`.
-- [ ] Compute `dueAt` from the exact clock time of save or the most recent successful review.
-- [ ] On `Missed it`, reset `reviewStage` to `0` and set the next `dueAt` to one day later at the same clock time as the missed review.
-- [ ] On meaningful edits to `name` or any detail, reset review progress.
-- [ ] Preserve review progress for typo-only or formatting-only edits.
+- [x] Store all data locally in IndexedDB using a single `people` table.
+- [x] Define the core `PersonEntry` shape with `id`, `name`, `memorableThing`, `whereMet`, `anotherDetail`, `createdAt`, `updatedAt`, `reviewStage`, `dueAt`, `lastReviewedAt`, and `learnedAt`.
+- [x] Implement review eligibility: a person is reviewable only when `name` exists and at least one detail field is non-empty.
+- [x] Implement incomplete state: entries with only a name are saved but marked as needing more details.
+- [x] Implement learned state once all review stages are completed.
+- [x] Use fixed review intervals in days: `[1, 1, 3, 7, 10, 14]`.
+- [x] Compute `dueAt` from the exact clock time of save or the most recent successful review.
+- [x] On `Missed it`, reset `reviewStage` to `0` and set the next `dueAt` to one day later at the same clock time as the missed review.
+- [x] On meaningful edits to `name` or any detail, reset review progress.
+- [x] Preserve review progress for typo-only or formatting-only edits.
 - [ ] Support hard delete only after explicit confirmation.
 
 ## 3. Capture and Saved Flows
@@ -76,23 +76,23 @@
 - [ ] Do not add backend push, periodic background sync, or exact closed-app delivery guarantees.
 
 ## 7. Important Modules
-- [ ] Create `db/people.ts` for IndexedDB schema, CRUD, and query helpers.
-- [ ] Create `domain/review.ts` for review schedule calculation, eligibility, reset logic, and due queue selection.
-- [ ] Create `domain/search.ts` for normalized substring matching across searchable fields.
-- [ ] Create `domain/meaningfulChange.ts` for distinguishing typo/format edits from memory-cue changes.
+- [x] Create `db/people.ts` for IndexedDB schema, CRUD, and query helpers.
+- [x] Create `domain/review.ts` for review schedule calculation, eligibility, reset logic, and due queue selection.
+- [x] Create `domain/search.ts` for normalized substring matching across searchable fields.
+- [x] Create `domain/meaningfulChange.ts` for distinguishing typo/format edits from memory-cue changes.
 - [x] Create route screens for `Capture`, `Saved`, `Review`, `PersonDetail`, and `EditPerson`.
 - [ ] Create shared UI pieces for bottom nav, search bar, review card, person row, success toast, and confirmation dialog.
 
 ## 8. Test Plan
 - [x] Add a minimal smoke test so the scaffold has a passing baseline test run.
-- [ ] Add unit tests for eligibility rules.
-- [ ] Add unit tests for exact next-day same-time due date computation.
-- [ ] Add unit tests for `Got it` stage advancement.
-- [ ] Add unit tests for `Missed it` reset behavior.
-- [ ] Add unit tests for learned-state transition after the final stage.
-- [ ] Add unit tests for newest-due-first queue selection with the 3-item cap.
-- [ ] Add unit tests for search matching across every field.
-- [ ] Add unit tests for meaningful edit detection versus typo-only edits.
+- [x] Add unit tests for eligibility rules.
+- [x] Add unit tests for exact next-day same-time due date computation.
+- [x] Add unit tests for `Got it` stage advancement.
+- [x] Add unit tests for `Missed it` reset behavior.
+- [x] Add unit tests for learned-state transition after the final stage.
+- [x] Add unit tests for newest-due-first queue selection with the 3-item cap.
+- [x] Add unit tests for search matching across every field.
+- [x] Add unit tests for meaningful edit detection versus typo-only edits.
 - [ ] Add component tests for capture save enabled/disabled states.
 - [ ] Add component tests for post-save clear and success message.
 - [ ] Add component tests for duplicate warning display.

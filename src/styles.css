@@ -246,17 +246,12 @@ a {
 
 .form-grid {
   display: grid;
-  gap: 0;
+  gap: 40px;
 }
 
 .field-stack {
   display: grid;
   gap: 4px;
-}
-
-.field-stack:not(:last-child) > .name-input,
-.field-stack:not(:last-child) > .text-input {
-  margin-bottom: 16px;
 }
 
 .primary-button,

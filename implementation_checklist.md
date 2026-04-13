@@ -8,6 +8,7 @@
 - [ ] Treat notifications as best-effort only in the PWA.
 
 ## 1. App Foundation
+- [x] Create the initial Vite React TypeScript scaffold with working build and test commands.
 - [ ] Scaffold a Vite React TypeScript app configured as a PWA.
 - [ ] Add `React Router` routes for `/capture`, `/saved`, `/person/:id`, `/person/:id/edit`, and `/review`.
 - [ ] Set up a mobile-first layout with bottom navigation pinned to `Capture` and `Saved`.
@@ -83,6 +84,7 @@
 - [ ] Create shared UI pieces for bottom nav, search bar, review card, person row, success toast, and confirmation dialog.
 
 ## 8. Test Plan
+- [x] Add a minimal smoke test so the scaffold has a passing baseline test run.
 - [ ] Add unit tests for eligibility rules.
 - [ ] Add unit tests for exact next-day same-time due date computation.
 - [ ] Add unit tests for `Got it` stage advancement.

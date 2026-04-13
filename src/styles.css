@@ -411,9 +411,13 @@ a {
 .bottom-nav {
   position: sticky;
   bottom: 0;
+  left: 50%;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
   padding: 10px;
   margin-top: 6px;
   border: 3px solid rgba(23, 23, 23, 0.28);

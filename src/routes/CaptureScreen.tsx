@@ -72,51 +72,59 @@ export function CaptureScreen() {
       {toastMessage ? <SuccessToast message={toastMessage} onDismiss={() => setToastMessage("")} /> : null}
 
       <div className="hero-card">
-        <label className="field-label" htmlFor="capture-name">
-          Name
-        </label>
-        <input
-          id="capture-name"
-          className="name-input"
-          name="name"
-          placeholder="Type a name"
-          autoFocus
-          value={form.name}
-          onChange={(event) => updateField("name", event.target.value)}
-        />
+        <div className="field-stack">
+          <label className="field-label" htmlFor="capture-name">
+            Name
+          </label>
+          <input
+            id="capture-name"
+            className="name-input"
+            name="name"
+            placeholder="Type a name"
+            autoFocus
+            value={form.name}
+            onChange={(event) => updateField("name", event.target.value)}
+          />
+        </div>
         <details className="details-card" ref={detailsRef}>
           <summary>Add more details</summary>
-          <div className="details-card__body">
-            <label className="field-label" htmlFor="memorable-thing">
-              Add memorable thing
-            </label>
-            <input
-              id="memorable-thing"
-              className="text-input"
-              placeholder="Round glasses"
-              value={form.memorableThing}
-              onChange={(event) => updateField("memorableThing", event.target.value)}
-            />
-            <label className="field-label" htmlFor="where-met">
-              Add where you met
-            </label>
-            <input
-              id="where-met"
-              className="text-input"
-              placeholder="Design meetup"
-              value={form.whereMet}
-              onChange={(event) => updateField("whereMet", event.target.value)}
-            />
-            <label className="field-label" htmlFor="another-detail">
-              Add another detail
-            </label>
-            <input
-              id="another-detail"
-              className="text-input"
-              placeholder="Talked about fintech"
-              value={form.anotherDetail}
-              onChange={(event) => updateField("anotherDetail", event.target.value)}
-            />
+          <div className="details-card__body form-grid">
+            <div className="field-stack">
+              <label className="field-label" htmlFor="memorable-thing">
+                Add memorable thing
+              </label>
+              <input
+                id="memorable-thing"
+                className="text-input"
+                placeholder="Round glasses"
+                value={form.memorableThing}
+                onChange={(event) => updateField("memorableThing", event.target.value)}
+              />
+            </div>
+            <div className="field-stack">
+              <label className="field-label" htmlFor="where-met">
+                Add where you met
+              </label>
+              <input
+                id="where-met"
+                className="text-input"
+                placeholder="Design meetup"
+                value={form.whereMet}
+                onChange={(event) => updateField("whereMet", event.target.value)}
+              />
+            </div>
+            <div className="field-stack">
+              <label className="field-label" htmlFor="another-detail">
+                Add another detail
+              </label>
+              <input
+                id="another-detail"
+                className="text-input"
+                placeholder="Talked about fintech"
+                value={form.anotherDetail}
+                onChange={(event) => updateField("anotherDetail", event.target.value)}
+              />
+            </div>
           </div>
         </details>
       </div>

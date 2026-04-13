@@ -95,7 +95,7 @@ a {
 .topbar__eyebrow,
 .section-kicker,
 .field-label {
-  margin: 0 0 2px;
+  margin: 0;
   color: var(--ink-soft);
   font-size: 0.78rem;
   font-weight: 700;
@@ -242,8 +242,16 @@ a {
 
 .details-card__body {
   padding: 4px 20px 22px;
+}
+
+.form-grid {
   display: grid;
-  gap: 10px;
+  gap: 8px;
+}
+
+.field-stack {
+  display: grid;
+  gap: 4px;
 }
 
 .primary-button,

@@ -86,42 +86,52 @@ export function EditPersonScreen() {
           <p className="section-kicker">Edit entry</p>
           <h2>Update details</h2>
         </div>
-        <label className="field-label" htmlFor="edit-name">
-          Name
-        </label>
-        <input
-          id="edit-name"
-          className="text-input"
-          value={form.name}
-          onChange={(event) => updateField("name", event.target.value)}
-        />
-        <label className="field-label" htmlFor="edit-memorable-thing">
-          Add memorable thing
-        </label>
-        <input
-          id="edit-memorable-thing"
-          className="text-input"
-          value={form.memorableThing}
-          onChange={(event) => updateField("memorableThing", event.target.value)}
-        />
-        <label className="field-label" htmlFor="edit-where-met">
-          Add where you met
-        </label>
-        <input
-          id="edit-where-met"
-          className="text-input"
-          value={form.whereMet}
-          onChange={(event) => updateField("whereMet", event.target.value)}
-        />
-        <label className="field-label" htmlFor="edit-another-detail">
-          Add another detail
-        </label>
-        <input
-          id="edit-another-detail"
-          className="text-input"
-          value={form.anotherDetail}
-          onChange={(event) => updateField("anotherDetail", event.target.value)}
-        />
+        <div className="form-grid">
+          <div className="field-stack">
+            <label className="field-label" htmlFor="edit-name">
+              Name
+            </label>
+            <input
+              id="edit-name"
+              className="text-input"
+              value={form.name}
+              onChange={(event) => updateField("name", event.target.value)}
+            />
+          </div>
+          <div className="field-stack">
+            <label className="field-label" htmlFor="edit-memorable-thing">
+              Add memorable thing
+            </label>
+            <input
+              id="edit-memorable-thing"
+              className="text-input"
+              value={form.memorableThing}
+              onChange={(event) => updateField("memorableThing", event.target.value)}
+            />
+          </div>
+          <div className="field-stack">
+            <label className="field-label" htmlFor="edit-where-met">
+              Add where you met
+            </label>
+            <input
+              id="edit-where-met"
+              className="text-input"
+              value={form.whereMet}
+              onChange={(event) => updateField("whereMet", event.target.value)}
+            />
+          </div>
+          <div className="field-stack">
+            <label className="field-label" htmlFor="edit-another-detail">
+              Add another detail
+            </label>
+            <input
+              id="edit-another-detail"
+              className="text-input"
+              value={form.anotherDetail}
+              onChange={(event) => updateField("anotherDetail", event.target.value)}
+            />
+          </div>
+        </div>
         <div className="edit-actions">
           <button className="primary-button" type="button" disabled={!form.name.trim()} onClick={() => void handleSave()}>
             Save changes

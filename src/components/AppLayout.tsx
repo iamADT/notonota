@@ -32,8 +32,8 @@ export function AppLayout() {
         <ReviewNotificationManager />
         <header className="topbar">
           <div>
-            <p className="topbar__eyebrow">Names Memory App</p>
-            <h1>{title}</h1>
+            <h1>notonota</h1>
+            <p className="topbar__screen">{title}</p>
           </div>
         </header>
         <main className="screen-shell">

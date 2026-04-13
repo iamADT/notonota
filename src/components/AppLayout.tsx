@@ -33,7 +33,7 @@ export function AppLayout() {
         <header className="topbar">
           <div>
             <h1>notonota</h1>
-            <p className="topbar__screen">{title}</p>
+            <p className="topbar__screen">remember who you met</p>
           </div>
         </header>
         <main className="screen-shell">

@@ -12,7 +12,7 @@ describe("App", () => {
     render(<RouterProvider router={router} />);
 
     expect(await screen.findByRole("heading", { name: "notonota" })).toBeInTheDocument();
-    expect(screen.getByText("Capture", { selector: ".topbar__screen" })).toBeInTheDocument();
+    expect(screen.getByText("remember who you met", { selector: ".topbar__screen" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Capture" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Saved" })).toBeInTheDocument();
   });

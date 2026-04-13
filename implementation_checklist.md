@@ -10,10 +10,10 @@
 ## 1. App Foundation
 - [x] Create the initial Vite React TypeScript scaffold with working build and test commands.
 - [ ] Scaffold a Vite React TypeScript app configured as a PWA.
-- [ ] Add `React Router` routes for `/capture`, `/saved`, `/person/:id`, `/person/:id/edit`, and `/review`.
-- [ ] Set up a mobile-first layout with bottom navigation pinned to `Capture` and `Saved`.
-- [ ] Implement the visual system: warm off-white background, charcoal outlines, restrained teal accents, rounded containers, and strong hierarchy.
-- [ ] Use plain CSS or CSS modules with shared design tokens.
+- [x] Add `React Router` routes for `/capture`, `/saved`, `/person/:id`, `/person/:id/edit`, and `/review`.
+- [x] Set up a mobile-first layout with bottom navigation pinned to `Capture` and `Saved`.
+- [x] Implement the visual system: warm off-white background, charcoal outlines, restrained teal accents, rounded containers, and strong hierarchy.
+- [x] Use plain CSS or CSS modules with shared design tokens.
 
 ## 2. Data Model and Persistence
 - [ ] Store all data locally in IndexedDB using a single `people` table.
@@ -80,7 +80,7 @@
 - [ ] Create `domain/review.ts` for review schedule calculation, eligibility, reset logic, and due queue selection.
 - [ ] Create `domain/search.ts` for normalized substring matching across searchable fields.
 - [ ] Create `domain/meaningfulChange.ts` for distinguishing typo/format edits from memory-cue changes.
-- [ ] Create route screens for `Capture`, `Saved`, `Review`, `PersonDetail`, and `EditPerson`.
+- [x] Create route screens for `Capture`, `Saved`, `Review`, `PersonDetail`, and `EditPerson`.
 - [ ] Create shared UI pieces for bottom nav, search bar, review card, person row, success toast, and confirmation dialog.
 
 ## 8. Test Plan

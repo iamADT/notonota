@@ -1,11 +1,11 @@
 # Names Memory App MVP Implementation Checklist
 
 ## Summary
-- [ ] Build the MVP as a local-first `Vite + React + TypeScript` PWA.
-- [ ] Use `React Router` for navigation and `Dexie` with IndexedDB for persistence.
-- [ ] Ship four core flows: capture, saved/search, review, and edit/delete.
-- [ ] Keep the MVP local-only with no backend, auth, or sync.
-- [ ] Treat notifications as best-effort only in the PWA.
+- [x] Build the MVP as a local-first `Vite + React + TypeScript` PWA.
+- [x] Use `React Router` for navigation and `Dexie` with IndexedDB for persistence.
+- [x] Ship four core flows: capture, saved/search, review, and edit/delete.
+- [x] Keep the MVP local-only with no backend, auth, or sync.
+- [x] Treat notifications as best-effort only in the PWA.
 
 ## 1. App Foundation
 - [x] Create the initial Vite React TypeScript scaffold with working build and test commands.
@@ -93,24 +93,24 @@
 - [x] Add unit tests for newest-due-first queue selection with the 3-item cap.
 - [x] Add unit tests for search matching across every field.
 - [x] Add unit tests for meaningful edit detection versus typo-only edits.
-- [ ] Add component tests for capture save enabled/disabled states.
-- [ ] Add component tests for post-save clear and success message.
-- [ ] Add component tests for duplicate warning display.
-- [ ] Add component tests for saved list ordering.
-- [ ] Add component tests for passive incomplete-entry labeling.
-- [ ] Add component tests for delete confirmation flow.
-- [ ] Add end-to-end coverage for creating a name-only entry.
-- [ ] Add end-to-end coverage for creating a reviewable entry.
-- [ ] Add end-to-end coverage for searching by descriptor instead of name.
-- [ ] Add end-to-end coverage for completing one review step.
-- [ ] Add end-to-end coverage for missing a review and confirming reset.
-- [ ] Add end-to-end coverage for editing without resetting review on typo-only changes.
-- [ ] Add end-to-end coverage for editing with a meaningful change and confirming reset.
+- [x] Add component tests for capture save enabled/disabled states.
+- [x] Add component tests for post-save clear and success message.
+- [x] Add component tests for duplicate warning display.
+- [x] Add component tests for saved list ordering.
+- [x] Add component tests for passive incomplete-entry labeling.
+- [x] Add component tests for delete confirmation flow.
+- [x] Add end-to-end coverage for creating a name-only entry.
+- [x] Add end-to-end coverage for creating a reviewable entry.
+- [x] Add end-to-end coverage for searching by descriptor instead of name.
+- [x] Add end-to-end coverage for completing one review step.
+- [x] Add end-to-end coverage for missing a review and confirming reset.
+- [x] Add end-to-end coverage for editing without resetting review on typo-only changes.
+- [x] Add end-to-end coverage for editing with a meaningful change and confirming reset.
 
 ## Assumptions and Defaults
-- [ ] MVP is PWA-first and local-only.
-- [ ] IndexedDB is the source of truth.
-- [ ] There is no auth, sync, import/export, or server API in MVP.
-- [ ] Duplicate detection is exact normalized name matching only.
-- [ ] Search is simple case-insensitive substring matching with no fuzzy logic.
-- [ ] Notifications are best-effort and not guaranteed when the app is closed.
+- [x] MVP is PWA-first and local-only.
+- [x] IndexedDB is the source of truth.
+- [x] There is no auth, sync, import/export, or server API in MVP.
+- [x] Duplicate detection is exact normalized name matching only.
+- [x] Search is simple case-insensitive substring matching with no fuzzy logic.
+- [x] Notifications are best-effort and not guaranteed when the app is closed.

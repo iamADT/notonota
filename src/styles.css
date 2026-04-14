@@ -563,6 +563,7 @@ a {
   align-items: center;
   justify-content: center;
   border: 2px solid transparent;
+  border-radius: 0;
   background: transparent;
   box-shadow: none;
   color: var(--ink-soft);

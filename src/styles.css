@@ -349,7 +349,7 @@ a {
 
 .add-name-v2__choice--active {
   background: var(--teal-soft);
-  box-shadow: 0 8px 0 rgba(15, 157, 138, 0.35);
+  box-shadow: none;
 }
 
 .add-name-v2__composer {

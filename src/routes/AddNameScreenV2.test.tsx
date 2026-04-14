@@ -18,7 +18,7 @@ describe("AddNameScreenV2", () => {
     expect(screen.queryByText("Start with a name, then choose what detail you want to add.")).not.toBeInTheDocument();
   });
 
-  it("reveals detail prompt choices after the name is confirmed", async () => {
+  it("reveals detail prompt choices when next confirms the name", async () => {
     const user = userEvent.setup();
 
     render(
@@ -29,7 +29,7 @@ describe("AddNameScreenV2", () => {
 
     await user.type(screen.getByLabelText("Name"), "Maya");
     expect(screen.queryByRole("button", { name: "Add memorable thing" })).not.toBeInTheDocument();
-    await user.click(screen.getByRole("button", { name: "Confirm name" }));
+    await user.click(screen.getByRole("button", { name: "Next" }));
 
     expect(screen.getByRole("button", { name: "Add memorable thing" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Add where you met" })).toBeInTheDocument();

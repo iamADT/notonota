@@ -97,6 +97,9 @@ export function AddNameScreenV2() {
 
   function handleNext() {
     if (!isNameCommitted) {
+      if (trimmedName) {
+        commitName();
+      }
       return;
     }
 
@@ -286,7 +289,10 @@ export function AddNameScreenV2() {
             <button
               className="secondary-button"
               type="button"
-              disabled={!isNameCommitted || (activeDetail ? !form[activeDetail].trim() : availablePrompts.length === 0)}
+              disabled={
+                !trimmedName ||
+                (isNameCommitted && (activeDetail ? !form[activeDetail].trim() : availablePrompts.length === 0))
+              }
               onClick={handleNext}
             >
               Next

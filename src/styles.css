@@ -257,9 +257,7 @@ a {
 .add-name-v2__shell {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   gap: 28px;
-  min-height: calc(100vh - 16rem);
   padding-bottom: 24px;
   background:
     radial-gradient(circle at bottom, rgba(15, 157, 138, 0.12), transparent 36%),

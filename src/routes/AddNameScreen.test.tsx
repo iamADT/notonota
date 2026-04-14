@@ -3,15 +3,15 @@ import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import { describe, expect, it } from "vitest";
 import { listPeople } from "../db/people";
-import { CaptureScreen } from "./CaptureScreen";
+import { AddNameScreen } from "./AddNameScreen";
 
-describe("CaptureScreen", () => {
+describe("AddNameScreen", () => {
   it("keeps save disabled until a name is entered", async () => {
     const user = userEvent.setup();
 
     render(
       <MemoryRouter>
-        <CaptureScreen />
+        <AddNameScreen />
       </MemoryRouter>
     );
 
@@ -28,7 +28,7 @@ describe("CaptureScreen", () => {
 
     render(
       <MemoryRouter>
-        <CaptureScreen />
+        <AddNameScreen />
       </MemoryRouter>
     );
 
@@ -50,7 +50,7 @@ describe("CaptureScreen", () => {
 
     render(
       <MemoryRouter>
-        <CaptureScreen />
+        <AddNameScreen />
       </MemoryRouter>
     );
 
@@ -70,7 +70,7 @@ describe("CaptureScreen", () => {
 
     render(
       <MemoryRouter>
-        <CaptureScreen />
+        <AddNameScreen />
       </MemoryRouter>
     );
 
@@ -92,4 +92,3 @@ describe("CaptureScreen", () => {
     });
   });
 });
-

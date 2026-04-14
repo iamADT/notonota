@@ -1,6 +1,6 @@
 import { Navigate, createBrowserRouter, type RouteObject } from "react-router-dom";
 import { AppLayout } from "../components/AppLayout";
-import { CaptureScreen } from "../routes/CaptureScreen";
+import { AddNameScreen } from "../routes/AddNameScreen";
 import { EditPersonScreen } from "../routes/EditPersonScreen";
 import { PersonDetailScreen } from "../routes/PersonDetailScreen";
 import { ReviewScreen } from "../routes/ReviewScreen";
@@ -11,8 +11,8 @@ export const routes: RouteObject[] = [
     path: "/",
     element: <AppLayout />,
     children: [
-      { index: true, element: <Navigate to="/capture" replace /> },
-      { path: "capture", element: <CaptureScreen /> },
+      { index: true, element: <Navigate to="/add-name" replace /> },
+      { path: "add-name", element: <AddNameScreen /> },
       { path: "saved", element: <SavedScreen /> },
       { path: "review", element: <ReviewScreen /> },
       { path: "person/:id", element: <PersonDetailScreen /> },

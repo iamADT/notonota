@@ -10,7 +10,7 @@ const initialForm = {
   anotherDetail: ""
 };
 
-export function CaptureScreen() {
+export function AddNameScreen() {
   const [form, setForm] = useState(initialForm);
   const [isSaving, setIsSaving] = useState(false);
   const [warning, setWarning] = useState<{ name: string; createdAt: string } | null>(null);
@@ -27,7 +27,7 @@ export function CaptureScreen() {
     setWarning(null);
   }
 
-  function resetCaptureForm() {
+  function resetAddNameForm() {
     setForm(initialForm);
     if (detailsRef.current) {
       detailsRef.current.open = false;
@@ -55,7 +55,7 @@ export function CaptureScreen() {
       }
 
       const savedEntry = await createPerson(form);
-      resetCaptureForm();
+      resetAddNameForm();
       setToastMessage(`Saved ${savedEntry.name}`);
       setWarning(null);
 
@@ -73,11 +73,11 @@ export function CaptureScreen() {
 
       <div className="hero-card">
         <div className="field-stack">
-          <label className="field-label" htmlFor="capture-name">
+          <label className="field-label" htmlFor="add-name-input">
             Name
           </label>
           <input
-            id="capture-name"
+            id="add-name-input"
             className="name-input"
             name="name"
             placeholder="Type a name"

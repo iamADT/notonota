@@ -2,7 +2,7 @@
   "name": "Notonota",
   "short_name": "Notonota",
   "description": "A lightweight app for remembering names and one memorable detail.",
-  "start_url": "/capture",
+  "start_url": "/add-name",
   "display": "standalone",
   "background_color": "#f8f2e4",
   "theme_color": "#0f9d8a",
@@ -15,4 +15,3 @@
     }
   ]
 }
-

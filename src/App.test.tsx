@@ -6,14 +6,14 @@ import { routes } from "./app/router";
 describe("App", () => {
   it("renders the default route and primary navigation", async () => {
     const router = createMemoryRouter(routes, {
-      initialEntries: ["/capture"]
+      initialEntries: ["/add-name"]
     });
 
     render(<RouterProvider router={router} />);
 
     expect(await screen.findByRole("heading", { name: "notonota" })).toBeInTheDocument();
     expect(screen.getByText("remember who you met", { selector: ".topbar__screen" })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Add" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Add name" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Saved" })).toBeInTheDocument();
   });
 });

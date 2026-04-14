@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 const links = [
   { to: "/saved", label: "Saved" },
-  { to: "/capture", label: "Add" }
+  { to: "/add-name", label: "Add name" }
 ];
 
 export function BottomNav() {

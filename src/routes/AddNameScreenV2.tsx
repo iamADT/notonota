@@ -1,0 +1,214 @@
+import { useMemo, useState } from "react";
+import { SuccessToast } from "../components/SuccessToast";
+import { createPerson, findDuplicateByName } from "../db/people";
+import { formatDateTime } from "../lib/format";
+
+const initialForm = {
+  name: "",
+  memorableThing: "",
+  whereMet: "",
+  anotherDetail: ""
+};
+
+const detailPrompts = [
+  {
+    key: "memorableThing",
+    optionLabel: "Add memorable thing",
+    promptLabel: "What stands out about them?",
+    inputLabel: "Memorable thing",
+    placeholder: "Round glasses"
+  },
+  {
+    key: "whereMet",
+    optionLabel: "Add where you met",
+    promptLabel: "Where did you meet?",
+    inputLabel: "Where you met",
+    placeholder: "Design meetup"
+  },
+  {
+    key: "anotherDetail",
+    optionLabel: "Add another detail",
+    promptLabel: "What else do you want to remember?",
+    inputLabel: "Another detail",
+    placeholder: "Talked about fintech"
+  }
+] as const;
+
+type DetailField = (typeof detailPrompts)[number]["key"];
+
+export function AddNameScreenV2() {
+  const [form, setForm] = useState(initialForm);
+  const [isSaving, setIsSaving] = useState(false);
+  const [warning, setWarning] = useState<{ name: string; createdAt: string } | null>(null);
+  const [toastMessage, setToastMessage] = useState("");
+  const [activeDetail, setActiveDetail] = useState<DetailField | null>(null);
+
+  const trimmedName = form.name.trim();
+  const availablePrompts = useMemo(
+    () => detailPrompts.filter((prompt) => !form[prompt.key].trim()),
+    [form]
+  );
+
+  function updateField(field: keyof typeof initialForm, value: string) {
+    setForm((current) => ({
+      ...current,
+      [field]: value
+    }));
+    setWarning(null);
+  }
+
+  function resetDraft() {
+    setForm(initialForm);
+    setActiveDetail(null);
+    setWarning(null);
+  }
+
+  async function persistEntry(forceDuplicateSave = false) {
+    if (!trimmedName || isSaving) {
+      return;
+    }
+
+    setIsSaving(true);
+
+    try {
+      if (!forceDuplicateSave) {
+        const duplicate = await findDuplicateByName(trimmedName);
+
+        if (duplicate) {
+          setWarning({
+            name: duplicate.name,
+            createdAt: duplicate.createdAt
+          });
+          return;
+        }
+      }
+
+      const savedEntry = await createPerson(form);
+      resetDraft();
+      setToastMessage(`Saved ${savedEntry.name}`);
+
+      if (document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+      }
+    } finally {
+      setIsSaving(false);
+    }
+  }
+
+  return (
+    <section className="screen-stack add-name-v2">
+      {toastMessage ? <SuccessToast message={toastMessage} onDismiss={() => setToastMessage("")} /> : null}
+
+      <div className="hero-card add-name-v2__shell">
+        <div className="add-name-v2__story">
+          <section className="add-name-v2__bubble">
+            <p className="section-kicker">Step 1</p>
+            <p className="add-name-v2__prompt">Who did you meet?</p>
+            <div className="field-stack">
+              <label className="field-label" htmlFor="add-name-v2-input">
+                Name
+              </label>
+              <input
+                id="add-name-v2-input"
+                className="name-input"
+                name="name"
+                placeholder="Type a name"
+                autoFocus
+                value={form.name}
+                onChange={(event) => updateField("name", event.target.value)}
+              />
+            </div>
+          </section>
+
+          {trimmedName ? (
+            <>
+              {detailPrompts
+                .filter((prompt) => form[prompt.key].trim())
+                .map((prompt) => (
+                  <button
+                    key={prompt.key}
+                    className="add-name-v2__response"
+                    type="button"
+                    onClick={() => setActiveDetail(prompt.key)}
+                  >
+                    <span className="section-kicker">{prompt.optionLabel}</span>
+                    <strong>{form[prompt.key].trim()}</strong>
+                  </button>
+                ))}
+
+              {availablePrompts.length ? (
+                <section className="add-name-v2__bubble">
+                  <p className="section-kicker">Step 2</p>
+                  <p className="add-name-v2__prompt">What do you want to remember about {trimmedName}?</p>
+                  <div className="add-name-v2__choices" role="list" aria-label="Detail prompts">
+                    {availablePrompts.map((prompt) => (
+                      <button
+                        key={prompt.key}
+                        className={
+                          activeDetail === prompt.key
+                            ? "secondary-button add-name-v2__choice add-name-v2__choice--active"
+                            : "secondary-button add-name-v2__choice"
+                        }
+                        type="button"
+                        onClick={() => setActiveDetail(prompt.key)}
+                      >
+                        {prompt.optionLabel}
+                      </button>
+                    ))}
+                  </div>
+                </section>
+              ) : null}
+            </>
+          ) : null}
+        </div>
+
+        <div className="add-name-v2__composer">
+          {activeDetail ? (
+            <div className="field-stack">
+              <label className="field-label" htmlFor={`detail-input-${activeDetail}`}>
+                {detailPrompts.find((prompt) => prompt.key === activeDetail)?.inputLabel}
+              </label>
+              <input
+                id={`detail-input-${activeDetail}`}
+                className="text-input"
+                placeholder={detailPrompts.find((prompt) => prompt.key === activeDetail)?.placeholder}
+                value={form[activeDetail]}
+                onChange={(event) => updateField(activeDetail, event.target.value)}
+              />
+            </div>
+          ) : trimmedName ? (
+            <p className="empty-state">Choose a prompt to add a detail for {trimmedName}.</p>
+          ) : (
+            <p className="empty-state">Start with a name, then choose what detail you want to add.</p>
+          )}
+
+          <div className="add-name-v2__actions">
+            <button className="secondary-button" type="button" onClick={resetDraft}>
+              Delete
+            </button>
+            <button
+              className="primary-button"
+              type="button"
+              disabled={!trimmedName || isSaving}
+              onClick={() => void persistEntry()}
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {warning ? (
+        <section className="warning-card">
+          <p className="support-card__title">Possible duplicate</p>
+          <p>
+            {warning.name} was already saved on {formatDateTime(warning.createdAt)}.
+          </p>
+          <button className="secondary-button" type="button" onClick={() => void persistEntry(true)}>
+            Save anyway
+          </button>
+        </section>
+      ) : null}
+    </section>
+  );
+}

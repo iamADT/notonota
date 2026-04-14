@@ -254,6 +254,91 @@ a {
   gap: 4px;
 }
 
+.add-name-v2__shell {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 28px;
+  min-height: calc(100vh - 16rem);
+  padding-bottom: 24px;
+  background:
+    radial-gradient(circle at bottom, rgba(15, 157, 138, 0.12), transparent 36%),
+    var(--surface);
+}
+
+.add-name-v2__story {
+  display: grid;
+  gap: 18px;
+  align-content: end;
+}
+
+.add-name-v2__bubble,
+.add-name-v2__response {
+  border: var(--outline);
+  border-radius: 28px;
+  background: #fffdf7;
+  padding: 20px;
+}
+
+.add-name-v2__bubble {
+  box-shadow: 0 10px 0 rgba(23, 23, 23, 0.08);
+}
+
+.add-name-v2__prompt {
+  margin: 8px 0 18px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.add-name-v2__response {
+  width: min(100%, 22rem);
+  margin-left: auto;
+  text-align: left;
+  box-shadow: 0 10px 0 rgba(15, 157, 138, 0.14);
+  cursor: pointer;
+}
+
+.add-name-v2__response strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 1rem;
+}
+
+.add-name-v2__choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.add-name-v2__choice {
+  width: auto;
+  justify-content: center;
+  padding-inline: 18px;
+  box-shadow: none;
+  background: rgba(15, 157, 138, 0.08);
+}
+
+.add-name-v2__choice--active {
+  background: var(--teal-soft);
+  box-shadow: 0 8px 0 rgba(15, 157, 138, 0.35);
+}
+
+.add-name-v2__composer {
+  display: grid;
+  gap: 20px;
+  padding: 24px;
+  border: var(--outline);
+  border-radius: 28px;
+  background: rgba(255, 250, 240, 0.96);
+  box-shadow: 0 10px 0 rgba(23, 23, 23, 0.12);
+}
+
+.add-name-v2__actions {
+  display: grid;
+  gap: 16px;
+}
+
 .primary-button,
 .secondary-button,
 .bottom-nav__link {
@@ -510,7 +595,8 @@ a {
 
   .review-card__actions,
   .edit-actions,
-  .dialog-actions {
+  .dialog-actions,
+  .add-name-v2__actions {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: center;
   }

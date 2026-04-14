@@ -181,20 +181,20 @@ export function AddNameScreenV2() {
           ) : (
             <p className="empty-state">Start with a name, then choose what detail you want to add.</p>
           )}
+        </div>
 
-          <div className="add-name-v2__actions">
-            <button className="secondary-button" type="button" onClick={resetDraft}>
-              Delete
-            </button>
-            <button
-              className="primary-button"
-              type="button"
-              disabled={!trimmedName || isSaving}
-              onClick={() => void persistEntry()}
-            >
-              Save
-            </button>
-          </div>
+        <div className="add-name-v2__actions">
+          <button className="secondary-button" type="button" onClick={resetDraft}>
+            Delete
+          </button>
+          <button
+            className="primary-button"
+            type="button"
+            disabled={!trimmedName || isSaving}
+            onClick={() => void persistEntry()}
+          >
+            Save
+          </button>
         </div>
       </div>
 

@@ -208,7 +208,7 @@ export function AddNameScreenV2() {
                     type="button"
                     onClick={() => setActiveDetail(prompt.key)}
                   >
-                    <span className="section-kicker">{prompt.optionLabel}</span>
+                    <span className="section-kicker">{prompt.inputLabel}</span>
                     <strong>{form[prompt.key].trim()}</strong>
                   </button>
                 ))}

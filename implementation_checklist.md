@@ -107,6 +107,14 @@
 - [x] Add end-to-end coverage for editing without resetting review on typo-only changes.
 - [x] Add end-to-end coverage for editing with a meaningful change and confirming reset.
 
+## 9. Experimental Add Name V2
+- [x] Add a separate `/add-name-v2` route for testing a second home-screen variant.
+- [x] Build a bottom-up, conversation-inspired add-name flow that starts with the name prompt.
+- [x] Reveal the three fixed detail prompts only after a name is entered and let the user activate one detail input at a time.
+- [x] Reuse the existing save and duplicate-warning behavior in V2.
+- [x] Treat `Delete` on V2 as clearing the in-progress draft.
+- [x] Add route and interaction tests for the V2 experiment.
+
 ## Assumptions and Defaults
 - [x] MVP is PWA-first and local-only.
 - [x] IndexedDB is the source of truth.

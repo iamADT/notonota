@@ -16,4 +16,15 @@ describe("App", () => {
     expect(screen.getByRole("link", { name: "Add name" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Saved" })).toBeInTheDocument();
   });
+
+  it("renders the experimental add-name v2 route", async () => {
+    const router = createMemoryRouter(routes, {
+      initialEntries: ["/add-name-v2"]
+    });
+
+    render(<RouterProvider router={router} />);
+
+    expect(await screen.findByText("Who did you meet?")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Add name" })).toBeInTheDocument();
+  });
 });

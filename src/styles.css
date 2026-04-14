@@ -577,6 +577,8 @@ a {
 .bottom-nav__link--active {
   background: rgba(15, 157, 138, 0.08);
   border-color: rgba(15, 157, 138, 0.22);
+  border-top-color: transparent;
+  border-bottom-color: transparent;
   box-shadow: none;
   color: var(--ink);
 }

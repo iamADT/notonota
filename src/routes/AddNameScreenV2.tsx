@@ -217,42 +217,42 @@ export function AddNameScreenV2() {
           ) : null}
         </div>
 
-        <div className="add-name-v2__composer">
-          {activeDetail ? (
-            <form
-              className="field-stack"
-              onSubmit={(event) => {
-                event.preventDefault();
-                commitDetail();
-              }}
-            >
-              <label className="field-label" htmlFor={`detail-input-${activeDetail}`}>
-                {detailPrompts.find((prompt) => prompt.key === activeDetail)?.inputLabel}
-              </label>
-              <div className="add-name-v2__input-row">
-                <input
-                  id={`detail-input-${activeDetail}`}
-                  className="text-input add-name-v2__text-entry"
-                  placeholder={detailPrompts.find((prompt) => prompt.key === activeDetail)?.placeholder}
-                  value={form[activeDetail]}
-                  onChange={(event) => updateField(activeDetail, event.target.value)}
-                />
-                <button
-                  className="add-name-v2__submit"
-                  type="submit"
-                  aria-label={`Confirm ${detailPrompts.find((prompt) => prompt.key === activeDetail)?.inputLabel}`}
-                  disabled={!form[activeDetail].trim()}
-                >
-                  <span aria-hidden="true">→</span>
-                </button>
-              </div>
-            </form>
-          ) : isNameCommitted ? (
-            <p className="empty-state">Choose a prompt to add a detail for {trimmedName}.</p>
-          ) : (
-            <p className="empty-state">Start with a name, then choose what detail you want to add.</p>
-          )}
-        </div>
+        {activeDetail || isNameCommitted ? (
+          <div className="add-name-v2__composer">
+            {activeDetail ? (
+              <form
+                className="field-stack"
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  commitDetail();
+                }}
+              >
+                <label className="field-label" htmlFor={`detail-input-${activeDetail}`}>
+                  {detailPrompts.find((prompt) => prompt.key === activeDetail)?.inputLabel}
+                </label>
+                <div className="add-name-v2__input-row">
+                  <input
+                    id={`detail-input-${activeDetail}`}
+                    className="text-input add-name-v2__text-entry"
+                    placeholder={detailPrompts.find((prompt) => prompt.key === activeDetail)?.placeholder}
+                    value={form[activeDetail]}
+                    onChange={(event) => updateField(activeDetail, event.target.value)}
+                  />
+                  <button
+                    className="add-name-v2__submit"
+                    type="submit"
+                    aria-label={`Confirm ${detailPrompts.find((prompt) => prompt.key === activeDetail)?.inputLabel}`}
+                    disabled={!form[activeDetail].trim()}
+                  >
+                    <span aria-hidden="true">→</span>
+                  </button>
+                </div>
+              </form>
+            ) : (
+              <p className="empty-state">Choose a prompt to add a detail for {trimmedName}.</p>
+            )}
+          </div>
+        ) : null}
 
         <div className="add-name-v2__actions">
           <button className="secondary-button" type="button" onClick={resetDraft}>

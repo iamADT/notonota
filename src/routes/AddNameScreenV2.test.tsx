@@ -15,7 +15,7 @@ describe("AddNameScreenV2", () => {
 
     expect(screen.getByLabelText("Name")).toBeInTheDocument();
     expect(screen.queryByRole("button", { name: "Add memorable thing" })).not.toBeInTheDocument();
-    expect(screen.getByText("Start with a name, then choose what detail you want to add.")).toBeInTheDocument();
+    expect(screen.queryByText("Start with a name, then choose what detail you want to add.")).not.toBeInTheDocument();
   });
 
   it("reveals detail prompt choices after the name is confirmed", async () => {

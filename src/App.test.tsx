@@ -25,6 +25,7 @@ describe("App", () => {
     render(<RouterProvider router={router} />);
 
     expect(await screen.findByText("Who did you meet?")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Add name" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Add name" })).toHaveClass("bottom-nav__link--active");
+    expect(screen.getByRole("link", { name: "Saved" })).not.toHaveClass("bottom-nav__link--active");
   });
 });

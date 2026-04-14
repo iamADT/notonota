@@ -339,7 +339,7 @@ a {
   gap: 12px;
 }
 
-.add-name-v2__choice {
+.secondary-button.add-name-v2__choice {
   width: auto;
   justify-content: center;
   padding-inline: 18px;
@@ -347,7 +347,7 @@ a {
   background: rgba(15, 157, 138, 0.08);
 }
 
-.add-name-v2__choice--active {
+.secondary-button.add-name-v2__choice--active {
   background: var(--teal-soft);
   box-shadow: none;
 }

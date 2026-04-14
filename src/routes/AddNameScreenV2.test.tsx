@@ -18,7 +18,7 @@ describe("AddNameScreenV2", () => {
     expect(screen.getByText("Start with a name, then choose what detail you want to add.")).toBeInTheDocument();
   });
 
-  it("reveals detail prompt choices after the name is entered", async () => {
+  it("reveals detail prompt choices after the name is confirmed", async () => {
     const user = userEvent.setup();
 
     render(
@@ -28,13 +28,16 @@ describe("AddNameScreenV2", () => {
     );
 
     await user.type(screen.getByLabelText("Name"), "Maya");
+    expect(screen.queryByRole("button", { name: "Add memorable thing" })).not.toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: "Confirm name" }));
 
     expect(screen.getByRole("button", { name: "Add memorable thing" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Add where you met" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Add another detail" })).toBeInTheDocument();
+    expect(screen.queryByLabelText("Name")).not.toBeInTheDocument();
   });
 
-  it("activates a selected detail input and saves the draft", async () => {
+  it("activates a selected detail input, confirms it, and saves the draft", async () => {
     const user = userEvent.setup();
 
     render(
@@ -44,8 +47,11 @@ describe("AddNameScreenV2", () => {
     );
 
     await user.type(screen.getByLabelText("Name"), "Ayo");
+    await user.click(screen.getByRole("button", { name: "Confirm name" }));
     await user.click(screen.getByRole("button", { name: "Add memorable thing" }));
     await user.type(screen.getByLabelText("Memorable thing"), "Fintech founder");
+    await user.click(screen.getByRole("button", { name: "Confirm Memorable thing" }));
+    expect(screen.queryByLabelText("Memorable thing")).not.toBeInTheDocument();
     await user.click(screen.getByRole("button", { name: "Save" }));
 
     expect(await screen.findByRole("status")).toHaveTextContent("Saved Ayo");
@@ -68,8 +74,10 @@ describe("AddNameScreenV2", () => {
     );
 
     await user.type(screen.getByLabelText("Name"), "Maya");
+    await user.click(screen.getByRole("button", { name: "Confirm name" }));
     await user.click(screen.getByRole("button", { name: "Add where you met" }));
     await user.type(screen.getByLabelText("Where you met"), "Design meetup");
+    await user.click(screen.getByRole("button", { name: "Confirm Where you met" }));
     await user.click(screen.getByRole("button", { name: "Delete" }));
 
     expect(screen.getByLabelText("Name")).toHaveValue("");

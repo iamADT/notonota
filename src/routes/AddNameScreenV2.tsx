@@ -42,6 +42,7 @@ export function AddNameScreenV2() {
   const [warning, setWarning] = useState<{ name: string; createdAt: string } | null>(null);
   const [toastMessage, setToastMessage] = useState("");
   const [activeDetail, setActiveDetail] = useState<DetailField | null>(null);
+  const [isNameCommitted, setIsNameCommitted] = useState(false);
 
   const trimmedName = form.name.trim();
   const availablePrompts = useMemo(
@@ -60,7 +61,38 @@ export function AddNameScreenV2() {
   function resetDraft() {
     setForm(initialForm);
     setActiveDetail(null);
+    setIsNameCommitted(false);
     setWarning(null);
+  }
+
+  function commitName() {
+    if (!trimmedName) {
+      return;
+    }
+
+    setIsNameCommitted(true);
+    setActiveDetail(null);
+
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+  }
+
+  function reopenNameEditor() {
+    setIsNameCommitted(false);
+    setActiveDetail(null);
+  }
+
+  function commitDetail() {
+    if (!activeDetail || !form[activeDetail].trim()) {
+      return;
+    }
+
+    setActiveDetail(null);
+
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
   }
 
   async function persistEntry(forceDuplicateSave = false) {
@@ -104,23 +136,46 @@ export function AddNameScreenV2() {
           <section className="add-name-v2__bubble">
             <p className="section-kicker">Step 1</p>
             <p className="add-name-v2__prompt">Who did you meet?</p>
-            <div className="field-stack">
-              <label className="field-label" htmlFor="add-name-v2-input">
-                Name
-              </label>
-              <input
-                id="add-name-v2-input"
-                className="name-input"
-                name="name"
-                placeholder="Type a name"
-                autoFocus
-                value={form.name}
-                onChange={(event) => updateField("name", event.target.value)}
-              />
-            </div>
+            {isNameCommitted ? (
+              <button className="add-name-v2__response" type="button" onClick={reopenNameEditor}>
+                <span className="section-kicker">Name</span>
+                <strong>{trimmedName}</strong>
+              </button>
+            ) : (
+              <form
+                className="field-stack"
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  commitName();
+                }}
+              >
+                <label className="field-label" htmlFor="add-name-v2-input">
+                  Name
+                </label>
+                <div className="add-name-v2__input-row">
+                  <input
+                    id="add-name-v2-input"
+                    className="name-input add-name-v2__text-entry"
+                    name="name"
+                    placeholder="Type a name"
+                    autoFocus
+                    value={form.name}
+                    onChange={(event) => updateField("name", event.target.value)}
+                  />
+                  <button
+                    className="add-name-v2__submit"
+                    type="submit"
+                    aria-label="Confirm name"
+                    disabled={!trimmedName}
+                  >
+                    <span aria-hidden="true">→</span>
+                  </button>
+                </div>
+              </form>
+            )}
           </section>
 
-          {trimmedName ? (
+          {isNameCommitted ? (
             <>
               {detailPrompts
                 .filter((prompt) => form[prompt.key].trim())
@@ -164,19 +219,35 @@ export function AddNameScreenV2() {
 
         <div className="add-name-v2__composer">
           {activeDetail ? (
-            <div className="field-stack">
+            <form
+              className="field-stack"
+              onSubmit={(event) => {
+                event.preventDefault();
+                commitDetail();
+              }}
+            >
               <label className="field-label" htmlFor={`detail-input-${activeDetail}`}>
                 {detailPrompts.find((prompt) => prompt.key === activeDetail)?.inputLabel}
               </label>
-              <input
-                id={`detail-input-${activeDetail}`}
-                className="text-input"
-                placeholder={detailPrompts.find((prompt) => prompt.key === activeDetail)?.placeholder}
-                value={form[activeDetail]}
-                onChange={(event) => updateField(activeDetail, event.target.value)}
-              />
-            </div>
-          ) : trimmedName ? (
+              <div className="add-name-v2__input-row">
+                <input
+                  id={`detail-input-${activeDetail}`}
+                  className="text-input add-name-v2__text-entry"
+                  placeholder={detailPrompts.find((prompt) => prompt.key === activeDetail)?.placeholder}
+                  value={form[activeDetail]}
+                  onChange={(event) => updateField(activeDetail, event.target.value)}
+                />
+                <button
+                  className="add-name-v2__submit"
+                  type="submit"
+                  aria-label={`Confirm ${detailPrompts.find((prompt) => prompt.key === activeDetail)?.inputLabel}`}
+                  disabled={!form[activeDetail].trim()}
+                >
+                  <span aria-hidden="true">→</span>
+                </button>
+              </div>
+            </form>
+          ) : isNameCommitted ? (
             <p className="empty-state">Choose a prompt to add a detail for {trimmedName}.</p>
           ) : (
             <p className="empty-state">Start with a name, then choose what detail you want to add.</p>

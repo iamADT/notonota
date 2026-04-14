@@ -291,6 +291,35 @@ a {
   letter-spacing: -0.02em;
 }
 
+.add-name-v2__input-row {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.add-name-v2__text-entry {
+  margin-bottom: 0;
+  box-shadow: none;
+  flex: 1;
+}
+
+.add-name-v2__submit {
+  flex: 0 0 64px;
+  border: var(--outline);
+  border-radius: 22px;
+  background: var(--teal-soft);
+  box-shadow: 0 6px 0 var(--teal);
+  font-size: 1.5rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.add-name-v2__submit:disabled {
+  opacity: 0.45;
+  box-shadow: 0 6px 0 #9ab9b3;
+  cursor: not-allowed;
+}
+
 .add-name-v2__response {
   width: min(100%, 22rem);
   margin-left: auto;

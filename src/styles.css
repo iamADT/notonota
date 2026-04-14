@@ -337,6 +337,11 @@ a {
 .add-name-v2__actions {
   display: grid;
   gap: 16px;
+  padding: 18px;
+  border: var(--outline);
+  border-radius: 24px;
+  background: #fffdf7;
+  box-shadow: 0 8px 0 rgba(23, 23, 23, 0.08);
 }
 
 .primary-button,

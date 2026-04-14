@@ -345,6 +345,7 @@ a {
   padding-inline: 18px;
   box-shadow: none;
   background: rgba(15, 157, 138, 0.08);
+  font-weight: 400;
 }
 
 .secondary-button.add-name-v2__choice--active {

@@ -95,6 +95,25 @@ export function AddNameScreenV2() {
     }
   }
 
+  function handleNext() {
+    if (!isNameCommitted) {
+      return;
+    }
+
+    if (activeDetail) {
+      if (form[activeDetail].trim()) {
+        commitDetail();
+      }
+      return;
+    }
+
+    const nextPrompt = availablePrompts[0];
+
+    if (nextPrompt) {
+      setActiveDetail(nextPrompt.key);
+    }
+  }
+
   async function persistEntry(forceDuplicateSave = false) {
     if (!trimmedName || isSaving) {
       return;
@@ -255,16 +274,26 @@ export function AddNameScreenV2() {
         ) : null}
 
         <div className="add-name-v2__actions">
-          <button className="secondary-button" type="button" onClick={resetDraft}>
+          <div className="add-name-v2__actions-row">
+            <button
+              className="primary-button"
+              type="button"
+              disabled={!trimmedName || isSaving}
+              onClick={() => void persistEntry()}
+            >
+              Save
+            </button>
+            <button
+              className="secondary-button"
+              type="button"
+              disabled={!isNameCommitted || (activeDetail ? !form[activeDetail].trim() : availablePrompts.length === 0)}
+              onClick={handleNext}
+            >
+              Next
+            </button>
+          </div>
+          <button className="text-button add-name-v2__delete" type="button" onClick={resetDraft}>
             Delete
-          </button>
-          <button
-            className="primary-button"
-            type="button"
-            disabled={!trimmedName || isSaving}
-            onClick={() => void persistEntry()}
-          >
-            Save
           </button>
         </div>
       </div>

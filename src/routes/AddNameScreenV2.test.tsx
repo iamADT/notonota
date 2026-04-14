@@ -37,7 +37,7 @@ describe("AddNameScreenV2", () => {
     expect(screen.queryByLabelText("Name")).not.toBeInTheDocument();
   });
 
-  it("activates a selected detail input, confirms it, and saves the draft", async () => {
+  it("uses next to move through the detail flow and saves the draft", async () => {
     const user = userEvent.setup();
 
     render(
@@ -48,9 +48,10 @@ describe("AddNameScreenV2", () => {
 
     await user.type(screen.getByLabelText("Name"), "Ayo");
     await user.click(screen.getByRole("button", { name: "Confirm name" }));
-    await user.click(screen.getByRole("button", { name: "Add memorable thing" }));
+    await user.click(screen.getByRole("button", { name: "Next" }));
+    expect(screen.getByLabelText("Memorable thing")).toBeInTheDocument();
     await user.type(screen.getByLabelText("Memorable thing"), "Fintech founder");
-    await user.click(screen.getByRole("button", { name: "Confirm Memorable thing" }));
+    await user.click(screen.getByRole("button", { name: "Next" }));
     expect(screen.queryByLabelText("Memorable thing")).not.toBeInTheDocument();
     await user.click(screen.getByRole("button", { name: "Save" }));
 
@@ -77,7 +78,7 @@ describe("AddNameScreenV2", () => {
     await user.click(screen.getByRole("button", { name: "Confirm name" }));
     await user.click(screen.getByRole("button", { name: "Add where you met" }));
     await user.type(screen.getByLabelText("Where you met"), "Design meetup");
-    await user.click(screen.getByRole("button", { name: "Confirm Where you met" }));
+    await user.click(screen.getByRole("button", { name: "Next" }));
     await user.click(screen.getByRole("button", { name: "Delete" }));
 
     expect(screen.getByLabelText("Name")).toHaveValue("");

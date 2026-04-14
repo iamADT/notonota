@@ -292,31 +292,32 @@ a {
 }
 
 .add-name-v2__input-row {
-  display: flex;
-  align-items: stretch;
-  gap: 12px;
+  position: relative;
 }
 
 .add-name-v2__text-entry {
   margin-bottom: 0;
   box-shadow: none;
-  flex: 1;
+  padding-right: 4.5rem;
 }
 
 .add-name-v2__submit {
-  flex: 0 0 64px;
-  border: var(--outline);
-  border-radius: 22px;
-  background: var(--teal-soft);
-  box-shadow: 0 6px 0 var(--teal);
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  border: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
   font-size: 1.5rem;
   font-weight: 800;
+  line-height: 1;
   cursor: pointer;
 }
 
 .add-name-v2__submit:disabled {
   opacity: 0.45;
-  box-shadow: 0 6px 0 #9ab9b3;
   cursor: not-allowed;
 }
 
